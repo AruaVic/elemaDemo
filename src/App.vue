@@ -3,13 +3,13 @@
     <Header :seller="seller"/>
     <div class="tab border-1px">
       <div class="tab-item">
-        <router-link :to="{path:'/goods'}">商品</router-link>
+        <router-link :to="{path:'/goods'}" active-class="active">商品</router-link>
       </div>
       <div class="tab-item">
-        <router-link :to="{path:'/ratings'}">评论</router-link>
+        <router-link :to="{path:'/ratings'}" active-class="active">评论</router-link>
       </div>
       <div class="tab-item">
-        <router-link :to="{path:'/seller'}">商家</router-link>
+        <router-link :to="{path:'/seller'}" active-class="active">商家</router-link>
       </div>
     </div>
 
@@ -31,7 +31,8 @@
       Header
     },
     created(){
-      this.axios.get('../static/data.json').then((response) => {
+      //this.axios.get('../static/data.json').then((response) => {
+      this.axios.get('./static/data.json').then((response) => {
         console.log(response);
         if(response.statusText=='OK'){
           this.seller=response.data.seller;
@@ -64,5 +65,8 @@
   }
   .tab-item a:active{
     color: rgb(240, 20, 20);
+  }
+  .active{
+    color:red;
   }
 </style>
